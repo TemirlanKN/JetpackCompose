@@ -13,6 +13,7 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -41,19 +42,19 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            LazyColumn(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxSize()
-            ) {
+            LazyRow(modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.Gray)
+            ){
                 itemsIndexed(
-                    listOf("item 1", "item 2", "finish")
-                ){ _, item ->
-                    Text(
-                        text = item,
-                        fontSize = 30.sp,
-                        modifier = Modifier.padding(vertical = 10.dp)
+                    listOf(
+                        ItemRowModel(R.drawable.nurlan, "Nurlan"),
+                        ItemRowModel(R.drawable.aida, "Aida"),
+                        ItemRowModel(R.drawable.damir, "Damir"),
+                        ItemRowModel(R.drawable.my, "Tim")
                     )
+                ){ _, item ->
+                    MyRow(item = item)
                 }
             }
         }
